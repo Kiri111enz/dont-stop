@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private Player _mover;
+    [SerializeField] private Mover _mover;
     
     private InputActions _input;
 
