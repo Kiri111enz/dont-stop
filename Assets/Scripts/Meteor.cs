@@ -14,7 +14,8 @@ public class Meteor : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // TODO: check if meteor hits player and ...
+        if (other.gameObject.TryGetComponent(out Alive alive))
+            alive.Die();
         
         Destroy(gameObject);
     }
