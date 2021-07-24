@@ -1,28 +1,40 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
     [SerializeField] private Canvas _restartMenu;
+    [SerializeField] private MonoBehaviour[] _scriptsToDisableOnPause;
 
-    private void Awake()
+    public bool IsPaused
     {
-        _restartMenu.gameObject.SetActive(false);
+        get => _isPaused;
+        set
+        {
+            if (_isPaused == value)
+                return;
+
+            _isPaused = value;
+            Time.timeScale = value ? 0 : 1;
+            Array.ForEach(_scriptsToDisableOnPause, script => script.enabled = !value);
+        }
     }
+    private bool _isPaused;
 
     public void End()
     {
-        Pause();
+        IsPaused = true;
         _restartMenu.gameObject.SetActive(true);
     }
 
     public void Restart()
     {
-        UnPause();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
-
-    private static void Pause() => Time.timeScale = 0;
-
-    private static void UnPause() => Time.timeScale = 1;
+    
+    private void Awake()
+    {
+        _restartMenu.gameObject.SetActive(false);
+    }
 }
