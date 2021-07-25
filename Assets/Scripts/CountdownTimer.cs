@@ -6,6 +6,7 @@ public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
     [SerializeField] private int _timeLeft;
+    
     [SerializeField] private Game _game;
 
     private IEnumerator Start()
@@ -18,8 +19,9 @@ public class CountdownTimer : MonoBehaviour
             yield return new WaitForSecondsRealtime(1);
             _timeLeft--;
         }
-        
-        Destroy(_text.gameObject);
+
+        _text.enabled = false;
         _game.IsPaused = false;
+        Destroy(this);
     }
 }

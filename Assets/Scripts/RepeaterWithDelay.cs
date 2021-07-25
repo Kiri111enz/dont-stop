@@ -3,15 +3,15 @@ using UnityEngine;
 
 public abstract class RepeaterWithDelay : MonoBehaviour
 {
-    [Header("Repeater settings")]
+    [Header("Repeater settings (in seconds)")]
     [SerializeField] private float _delay;
     [SerializeField] private float _delayStep;
     [SerializeField] private float _minimalDelay;
 
-    private float Delay
+    protected float Delay
     {
         get => _delay = Mathf.Max(_minimalDelay, _delay);
-        set => _delay = Mathf.Max(_minimalDelay, value);
+        private set => _delay = Mathf.Max(_minimalDelay, value);
     }
     
     protected abstract void OnRepeat();
@@ -20,7 +20,7 @@ public abstract class RepeaterWithDelay : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(_delay);
+            yield return new WaitForSeconds(Delay);
             OnRepeat();
 
             if (Delay != _minimalDelay) // actually correct here

@@ -22,5 +22,5 @@ public abstract class Mover : MonoBehaviour
             DirectionChanged?.Invoke(value);
         }
     }
-    private Direction _direction;
+    [SerializeField] private Direction _direction;
 }
