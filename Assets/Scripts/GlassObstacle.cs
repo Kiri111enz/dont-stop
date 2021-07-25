@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Obstacle : MonoBehaviour
+public class GlassObstacle : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {

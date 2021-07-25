@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -28,11 +27,6 @@ public class Game : MonoBehaviour
         _restartMenu.gameObject.SetActive(true);
     }
 
-    public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-    }
-    
     private void Awake()
     {
         _restartMenu.gameObject.SetActive(false);
