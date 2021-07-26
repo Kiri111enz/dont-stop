@@ -150,6 +150,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb98ac7347230b64eb2b9bc37415e8db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Collided:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: a1d7e84d4dd5bed4b8184feb569ff4e8, type: 2}
+        m_TargetAssemblyTypeName: DestructionUtil, Assembly-CSharp
+        m_MethodName: Destroy
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9064885358183871319}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!96 &3572562129499287772
 TrailRenderer:
   serializedVersion: 2

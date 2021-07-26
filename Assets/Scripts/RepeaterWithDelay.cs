@@ -3,17 +3,17 @@ using UnityEngine;
 
 public abstract class RepeaterWithDelay : MonoBehaviour
 {
-    [Header("Repeater settings (in seconds)")]
-    [SerializeField] private float _delay;
-    [SerializeField] private float _delayStep;
-    [SerializeField] private float _minimalDelay;
-
     protected float Delay
     {
         get => _delay = Mathf.Max(_minimalDelay, _delay);
         private set => _delay = Mathf.Max(_minimalDelay, value);
     }
     
+    [Header("Repeater settings (in seconds)")]
+    [SerializeField] private float _delay;
+    [SerializeField] private float _delayStep;
+    [SerializeField] private float _minimalDelay;
+
     protected abstract void OnRepeat();
     
     private IEnumerator RepetitionLoop()

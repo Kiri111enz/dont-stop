@@ -8,8 +8,19 @@ public enum Direction
 
 public abstract class Mover : MonoBehaviour
 {
-    public event Action<Direction> DirectionChanged;
-    
+    public float Speed
+    {
+        get => _speed = Mathf.Max(0, _speed);
+        set
+        {
+            if (value < 0)
+                throw new ArgumentOutOfRangeException(nameof(Speed), "Speed can't be negative!");
+
+            _speed = value;
+        }
+    }
+    [SerializeField] private float _speed;
+
     public Direction Direction
     {
         get => _direction;
@@ -23,4 +34,6 @@ public abstract class Mover : MonoBehaviour
         }
     }
     [SerializeField] private Direction _direction;
+    
+    public event Action<Direction> DirectionChanged;
 }
