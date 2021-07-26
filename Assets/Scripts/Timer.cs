@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class Timer : RepeaterWithDelay
 {
-    [Space]
+    [field: Space, SerializeField]
+    public float Time { get; private set; }
+
     [SerializeField] private TMP_Text _text;
     [SerializeField] private string _format = @"mm\:ss";
-    [SerializeField] private float _time;
+
+    public string TextFromTime(float seconds) => TimeSpan.FromSeconds(seconds).ToString(_format);
 
     protected override void OnRepeat()
     {
-        _time += Delay;
-        DisplayTime();
-    }
-
-    private void DisplayTime()
-    {
-        _text.text = TimeSpan.FromSeconds(_time).ToString(_format);
+        Time += Delay;
+        _text.text = TextFromTime(Time);
     }
 }

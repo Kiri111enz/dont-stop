@@ -21,14 +21,12 @@ public class Game : MonoBehaviour
     }
     private bool _isPaused;
 
+    public event Action Ended;
+
     public void End()
     {
         IsPaused = true;
         _restartMenu.gameObject.SetActive(true);
-    }
-
-    private void Awake()
-    {
-        _restartMenu.gameObject.SetActive(false);
+        Ended?.Invoke();
     }
 }
